@@ -73,21 +73,24 @@ fun SpeechToTextApp() {
 //    var SpeakText = remember {
 //        mutableStateOf("hi")
 //    }
-    Box (modifier = Modifier.fillMaxSize()){
-        Column (
+    Box (modifier = Modifier.fillMaxSize()) {
+        Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             IconButton(onClick = {
                 val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+                intent.putExtra(
+                    RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+                )
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-                intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Speak Now")
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak Now")
                 startForResult.launch(intent)
 
             }) {
-                Icon(Icons.Rounded.Mic ,contentDescription = null)
+                Icon(Icons.Rounded.Mic, contentDescription = null)
             }
 
             Text(text = SpeakText)
